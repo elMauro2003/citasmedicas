@@ -112,9 +112,9 @@ class HorarioController extends Controller
      */
     public function edit($id)
     {
+        $doctores = Doctor::all();
         $consultorios = Consultorio::all();
         $horario = Horario::with('doctor')->findOrFail($id);
-        $doctores = Doctor::all();
         return view('admin.horarios.edit', compact('horario', 'consultorios', 'doctores'));
     }
 
@@ -123,7 +123,7 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $request->validate([
             'dia' => 'required',
             'hora_inicio' => 'required|date_format:H:i',
@@ -178,8 +178,19 @@ class HorarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Horario $horario)
+
+     public function confirmDelete($id){
+        $doctores = Doctor::all();
+        $consultorios = Consultorio::all();
+        $horario = Horario::with('doctor')->findOrFail($id);
+        return view('admin.horarios.delete', compact('horario', 'doctores', 'consultorios'));
+     }
+
+    public function destroy($id)
     {
-        //
+        Horario::destroy($id);
+        return redirect()->route('admin.horarios.index')
+            ->with('mensaje','Horario eliminado correctamente!')
+            ->with('icono','success');
     }
 }

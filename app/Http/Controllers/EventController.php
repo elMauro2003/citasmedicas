@@ -140,8 +140,8 @@ class EventController extends Controller
         Event::destroy($id);
 
         return redirect()->route('admin.index')
-        ->with('mensaje','Reserva eliminada correctamente!')
-        ->with('icono','success');
+            ->with('mensaje','Reserva eliminada correctamente!')
+            ->with('icono','success');
     }
 
     public function reportes(){
