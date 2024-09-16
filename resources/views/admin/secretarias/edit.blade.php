@@ -6,7 +6,7 @@
     <hr>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-outline card-primary">
+            <div class="card card-outline card-success">
                 <div class="card-header">
                     <h3 class="card-title">Rellene los datos</h3>
                 </div>
@@ -110,7 +110,7 @@
                             <div class="col-md-12">
                                 <div class="form group">
                                     <a href="{{url('admin/secretarias')}}" class="btn btn-secondary">Cancelar</a>
-                                    <button type="submit" class="btn btn-primary">Actualizar secretaria</button>
+                                    <button type="submit" class="btn btn-success">Actualizar secretaria</button>
                                 </div>
                             </div>
                         </div>

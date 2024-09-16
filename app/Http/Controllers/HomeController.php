@@ -36,6 +36,6 @@ class HomeController extends Controller
         $totalDoctores = Doctor::count();
         $totalHorarios = Horario::count();
         return view('admin.index', compact('totalUsuarios', 'totalSecretarias', 'totalPacientes', 'totalConsultorios', 'totalDoctores', 'totalHorarios'));*/
-        return view('home');
+        return view('index');
     }
 }

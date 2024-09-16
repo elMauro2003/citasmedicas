@@ -110,17 +110,69 @@ class HorarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Horario $horario)
+    public function edit($id)
     {
-        //
+        $consultorios = Consultorio::all();
+        $horario = Horario::with('doctor')->findOrFail($id);
+        $doctores = Doctor::all();
+        return view('admin.horarios.edit', compact('horario', 'consultorios', 'doctores'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Horario $horario)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+            'dia' => 'required',
+            'hora_inicio' => 'required|date_format:H:i',
+            'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
+            'consultorio_id' => 'required|exists:consultorios,id', // Verificar que el consultorio exista
+        ]);
+
+        //echo $request->hora_inicio." ".$request->hora_fin;
+        
+        // Verificar si existe un horario diferente que se solape con el nuevo horario, pero que no incluya el mismo horario que se está actualizando
+        $horarioExistente = Horario::where('dia', $request->dia)
+            ->where(function ($query) use ($request) {
+                // Filtrar por consultorio o por doctor
+                $query->where('consultorio_id', $request->consultorio_id)
+                    ->orWhere('doctor_id', $request->doctor_id); // Asegurarse de que el doctor no esté en otro consultorio al mismo tiempo
+            })
+            ->where(function ($query) use ($request) {
+                // Filtrar los horarios que se solapan pero excluyendo el horario actual si se está editando
+                $query->where(function ($query) use ($request) {
+                    $query->where('hora_inicio', '>=', $request->hora_inicio)
+                        ->where('hora_inicio', '<', $request->hora_fin);
+                })
+                ->orWhere(function ($query) use ($request) {
+                    $query->where('hora_fin', '>', $request->hora_inicio)
+                        ->where('hora_fin', '<=', $request->hora_fin);
+                })
+                ->orWhere(function ($query) use ($request) {
+                    $query->where('hora_inicio', '<', $request->hora_inicio)
+                        ->where('hora_fin', '>', $request->hora_fin);
+                });
+            })
+            ->where('id', '!=', $request->id) // Excluir el horario actual (en caso de edición)
+            ->exists();
+        
+        if ($horarioExistente) {
+            return redirect()->back()
+                ->withInput()
+                ->with('mensaje', 'Ya existe un horario que se superpone con el horario ingresado!')
+                ->with('icono', 'error');
+        }
+        
+        
+        // Forma rapida de actualizar un Horario
+        $horario = Horario::with('doctor')->findOrFail($id);
+        $horario->update($request->all());
+        
+        return redirect()->route('admin.horarios.index')
+            ->with('mensaje', 'Horario actualizado correctamente!')
+            ->with('icono', 'success');
     }
 
     /**

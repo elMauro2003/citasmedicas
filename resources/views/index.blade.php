@@ -76,7 +76,7 @@
                 </nav>
 
                 @if (auth()->check())
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ url('logout') }}">
                         @csrf
                         <button type="submit" class="cta-btn">Cerrar sesión</button>
                     </form>

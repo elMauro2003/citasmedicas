@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="row">
-        <h1>Doctor: {{$doctor->nombres." ".$doctor->apellidos}}</h1>
+        <h1>Editar Doctor: {{$doctor->nombres." ".$doctor->apellidos}}</h1>
     </div>
     <hr>
     <div class="row">

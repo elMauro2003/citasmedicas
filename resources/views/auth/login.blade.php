@@ -23,7 +23,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="" class="h1"><b>SCM</b>|Cuba</a>
+      <a href="" class="h1"><b>SRCM</b>|Cuba</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg"><b>Inicio de sesión</b></p>

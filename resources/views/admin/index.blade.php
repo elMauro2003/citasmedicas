@@ -4,7 +4,8 @@
         <div class="col-md-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                  <h3><b>Bienvenido:</b> {{ Auth::user()->name }} // <b>Rol: </b>{{ Auth::user()->roles->pluck('name')->first() }}</h3>
+                    <h3><b>Bienvenido:</b> {{ Auth::user()->name }} // <b>Rol:
+                        </b>{{ Auth::user()->roles->pluck('name')->first() }}</h3>
                 </div>
             </div>
         </div>
@@ -406,7 +407,7 @@
                                                                         let selectedDate = this.value; // Obtener la fecha seleccionada
 
                                                                         let today = new Date().toISOString().slice(0,
-                                                                        10); // Obtener la fecha actual en formato ISO (yyy-mm-dd)
+                                                                            10); // Obtener la fecha actual en formato ISO (yyy-mm-dd)
 
                                                                         if (selectedDate < today) {
                                                                             // verificar que la fecha no sea anterior a la actual
