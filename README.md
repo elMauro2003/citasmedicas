@@ -1,5 +1,6 @@
 ------------
 ![](https://github.com/elMauro2003/imagenes/blob/main/SRCM-image.jpg)
+
 # Sistema de Reservas de Citas Médicas
 
 ## Dependencias
