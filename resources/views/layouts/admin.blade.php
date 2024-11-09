@@ -97,14 +97,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           
           @can('admin.usuarios.index')
-            <li class="nav-item">
-              <a href="{{url('/admin/configuracion')}}" class="nav-link active">
+            <!--<li class="nav-item">
+              <a href="{/*{url('/admin/configuracion')}}*/" class="nav-link active">
                 <i class="nav-icon fas bi bi-gear"></i>
                 <p>
                   Configuración
                 </p>
               </a>
-            </li>
+            </li> -->
           @endcan
 
           @can('admin.usuarios.index')

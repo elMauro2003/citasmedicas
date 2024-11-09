@@ -87,7 +87,7 @@ class EventController extends Controller
         $event->user_id = Auth::user()->id;
         $event->doctor_id  = $request->doctor_id;
         $event->consultorio_id = '1';
-        $event->save();
+        $event->save();    
 
         return redirect()->route('admin.index')
             ->with('mensaje','Se registró la reserva de la cita medica la manera correcta!')

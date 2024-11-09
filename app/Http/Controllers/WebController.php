@@ -7,6 +7,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Horario;
+use App\Models\User;
 use Exception;
 
 class WebController extends Controller
@@ -14,6 +15,13 @@ class WebController extends Controller
     public function index(){
         $consultorios = Consultorio::all();
         return view('index', compact('consultorios'));
+    }
+
+    // Prueba
+    public function prueba($id){
+        //$consultorios = Consultorio::all();
+        $usuario = User::findOrFail($id);
+        return view('admin.prueba', compact('usuario'));
     }
 
     public function cargarDatosConsultorios($id){

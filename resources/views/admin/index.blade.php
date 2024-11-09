@@ -152,12 +152,12 @@
                                     "pageLength": 15,
                                     "language": {
                                         "emptyTable": "No hay información",
-                                        "info": "Mostrando START a END de TOTAL Consultorios",
-                                        "infoEmpty": "Mostrando 0 a 0 de 0 Consultorios",
-                                        "infoFiltered": "(Filtrado de MAX total Consultorios)",
+                                        "info": "",
+                                        "infoEmpty": "",
+                                        "infoFiltered": "",
                                         "infoPostFix": "",
                                         "thousands": ",",
-                                        "lengthMenu": "Mostrar MENU Consultorios",
+                                        "lengthMenu": "",
                                         "loadingRecords": "Cargando...",
                                         "processing": "Procesando...",
                                         "search": "Buscador:",
@@ -220,22 +220,36 @@
             </div>
         @endcan
 
-        @can('admin.configuracion.index')
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>{{ $totalConfiguraciones }}</h3>
-                        <p>Configuraciones</p>
+        {{-- @can('admin.configuracion.index')
+              <!-- small box -->
+
+            <div class="small-box bg-info">
+
+                 <div class="inner">
+
+                  <h3>{{ $totalConfiguraciones }}</h3>
+
+                   <p>Configuraciones</p>
+
                     </div>
-                    <div class="icon">
-                        <i class="icon fas bi bi-gear"></i>
-                    </div>
-                    <a href="{{ url('/admin/configuracion') }}" class="small-box-footer">Más Info <i
-                            class="bi bi-gear"></i></a>
-                </div>
+
+                     <div class="icon">
+
+                      <i class="icon fas bi bi-gear"></i>
+
+                       </div>
+
+                        <a href="{{ url('/admin/configuracion') }}" class="small-box-footer">Más Info <i
+
+                             class="bi bi-gear"></i></a>
+
+                      </div>
+
+                       </div>
+
+                    @endcan 
             </div>
-        @endcan
+        @endcan--}}
 
     </div> <!-- END Widgets -->
 

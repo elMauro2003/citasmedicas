@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/admin/prueba', [App\Http\Controllers\WebController::class, 'prueba'])->name('prueba');
+
 Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('home');
 
 Auth::routes();

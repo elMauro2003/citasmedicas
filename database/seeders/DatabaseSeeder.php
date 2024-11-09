@@ -10,6 +10,7 @@ use App\Models\Secretaria;
 use App\Models\User;
 use App\Models\Horario;
 use App\Models\Doctor;
+use App\Models\Event;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -102,12 +103,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name'=> 'Paciente1',
-            'email'=> 'paciente1@nauta.cu',
-            'password'=> Hash::make('12345678')
-        ])->assignRole('paciente');
-
-        User::create([
             'name'=> 'Usuario1',
             'email'=> 'usuario1@nauta.cu',
             'password'=> Hash::make('12345678')
@@ -153,6 +148,63 @@ class DatabaseSeeder extends Seeder
             'consultorio_id'=> '1',
         ]);
 
+        Horario::create([
+            'dia'=> 'LUNES',
+            'hora_inicio'=> '15:00:00',
+            'hora_fin'=> '17:00:00',
+            'doctor_id'=> '3',
+            'consultorio_id'=> '1',
+        ]);
+
+        Horario::create([
+            'dia'=> 'MARTES',
+            'hora_inicio'=> '10:00:00',
+            'hora_fin'=> '12:00:00',
+            'doctor_id'=> '2',
+            'consultorio_id'=> '2',
+        ]);
+
+
+        Horario::create([
+            'dia'=> 'MARTES',
+            'hora_inicio'=> '10:00:00',
+            'hora_fin'=> '12:00:00',
+            'doctor_id'=> '2',
+            'consultorio_id'=> '1',
+        ]);
+
+        Horario::create([
+            'dia'=> 'MIERCOLES',
+            'hora_inicio'=> '11:00:00',
+            'hora_fin'=> '16:00:00',
+            'doctor_id'=> '3',
+            'consultorio_id'=> '1',
+        ]);
+
+        Horario::create([
+            'dia'=> 'SABADO',
+            'hora_inicio'=> '09:00:00',
+            'hora_fin'=> '12:00:00',
+            'doctor_id'=> '2',
+            'consultorio_id'=> '1',
+        ]);
+
+        Horario::create([
+            'dia'=> 'SABADO',
+            'hora_inicio'=> '13:00:00',
+            'hora_fin'=> '16:00:00',
+            'doctor_id'=> '1',
+            'consultorio_id'=> '1',
+        ]);
+
+        Horario::create([
+            'dia'=> 'JUEVES',
+            'hora_inicio'=> '11:00:00',
+            'hora_fin'=> '13:00:00',
+            'doctor_id'=> '3',
+            'consultorio_id'=> '1',
+        ]);
+
         Configuracion::create([
             'nombre'=>'Config1',
             'direccion'=>'Cienfuegos, Tulipan Calle 16 / 87 y 89 Altos',
@@ -163,6 +215,48 @@ class DatabaseSeeder extends Seeder
 
         // Creacion de una configuracion
         
+
+        // Creacion de eventos
+
+        Event::create([
+            'title' => '12:00 Fisioterapia',
+            'start' => '2024-11-11 12:00:00',
+            'end' => '2024-11-11 12:00:00',
+            'color' => '#e82216',
+            'user_id' => 1,
+            'doctor_id' => 1,
+            'consultorio_id' => 1,
+        ]);
+
+        Event::create([
+            'title' => '11:00 Pediatría',
+            'start' => '2023-10-01 11:00:00',
+            'end' => '2023-10-01 11:30:00',
+            'color' => '#e82216',
+            'user_id' => 2,
+            'doctor_id' => 2,
+            'consultorio_id' => 1,
+        ]);
+
+        Event::create([
+            'title' => '15:00 Oftalmología',
+            'start' => '2024-11-11 15:00:00',
+            'end' => '2024-11-11 15:00:00',
+            'color' => '#e82216',
+            'user_id' => 1,
+            'doctor_id' => 3,
+            'consultorio_id' => 1,
+        ]);
+
+        Event::create([
+            'title' => '11:00 Radiologia',
+            'start' => '2024-11-16 11:00:00',
+            'end' => '2024-11-16 11:00:00',
+            'color' => '#e82216',
+            'user_id' => 1,
+            'doctor_id' => 2,
+            'consultorio_id' => 1,
+        ]);
 
     }
 }

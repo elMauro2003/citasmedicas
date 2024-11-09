@@ -82,4 +82,6 @@ class UsuarioController extends Controller
             ->with('mensaje', 'Usuario eliminado correctamente!')
             ->with('icono', 'success');
     }
+
+
 }
